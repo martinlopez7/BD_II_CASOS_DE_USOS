@@ -1,4 +1,4 @@
-Dadas las siguientes tablas: 
+Dadas las siguientes tablas y utilizando el orm y el odm dado en clases: 
 
 ---Student
 --
