@@ -85,7 +85,7 @@ try {
    console.log('Cursos de 4 creditos por departamento insertados en Compass');
 
    const coursesByYear = await takes.aggregate([
-      {$group: {_id: "$year", totalCursos: {$sum: 1}}},
+      {$group: {_id: { $year: "$year" }, totalCursos: {$sum: 1}}},
       {$sort: {_id:1}}]);
 
    console.log('Numero de cursos tomados por año', coursesByYear);
