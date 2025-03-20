@@ -4,7 +4,6 @@ import { getdata } from './api.js';
 const { Schema, model } = mongoose;
 const uri = 'mongodb://127.0.0.1:27017/CU_EJERCICIO_5';
 
-// Configuración de mongoose
 const options = {
     autoIndex: true,
     maxPoolSize: 10,
@@ -13,7 +12,6 @@ const options = {
     family: 4
 };
 
-// Definiendo esquemas
 const studentSchema = new Schema({
     ID: { type: String, required: true },
     name: { type: String, required: true },
@@ -58,7 +56,9 @@ async function main() {
         await mongoose.connect(uri, options);
         console.log('Conexión exitosa');
         
+        console.log('Datos que se insertarán en Student:', students);
         await Student.insertMany(students);
+        console.log('Datos que se insertarán en Take:', takes);
         await Take.insertMany(takes);
         
         console.log('Datos insertados correctamente');
