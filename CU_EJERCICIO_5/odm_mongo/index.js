@@ -12,6 +12,11 @@ const options = {
     family: 4
 };
 
+mongoose.connect(uri, options).then(
+  () => console.log('Se ha conectado exitosamente'),
+  err => console.log('No se ha podido conectar', err)
+);
+
 const studentSchema = new Schema({
     ID: { type: String, required: true },
     name: { type: String, required: true },
@@ -52,9 +57,6 @@ async function main() {
             });
             return acc;
         }, []);
-
-        await mongoose.connect(uri, options);
-        console.log('Conexión exitosa');
         
         console.log('Datos que se insertarán en Student:', students);
         await Student.insertMany(students);
@@ -62,10 +64,9 @@ async function main() {
         await Take.insertMany(takes);
         
         console.log('Datos insertados correctamente');
+        process.exit(0);
     } catch (error) {
         console.error('Error al procesar los datos:', error);
-    } finally {
-        mongoose.disconnect();
     }
 }
 

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { getdata } from './api.js';
 const { Schema, model } = mongoose;
-let uri = 'mongodb://127.0.0.1:27017/ec2024';
+let uri = 'mongodb://127.0.0.1:27017/ejercicio1';
 //trayendo la data del api
 const query = await getdata().then(data => {
    console.log(data);
