@@ -37,17 +37,17 @@ const actorSchema = new mongoose.Schema({
   last_name: { type: String },
   last_update: { type: Date, default: Date.now}
 });
-const filmSchema = new mongoose.Schema({
+const filmSchema = new mongoose.Schema({  
   film_id: { type: Number },
   title: { type: String },
   description: { type: String },
   realase_year: { type: Date, default: Date.now },
   language_id: { type: Number },
   original_language_id: { type: Number, default: null },
-  rental_duration: { type: String },
+  rental_duration: { type: Number },
   rental_rate: { type: mongoose.Types.Decimal128 },
   length: { type: Number },
-  replacement_cost: { type: String },
+  replacement_cost: { type: mongoose.Types.Decimal128 },
   rating: { type: String, enum:['G', 'PG', 'PG-13', 'R', 'NC-17'], default: 'G'},
   special_features: { type: [{type: String}], default: []},
   last_update: { type: Date, default: Date.now }
