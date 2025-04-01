@@ -14,7 +14,7 @@ const query = await getdata().then(data => {
 });
 
 const options = {
-   autoIndex: false, // Don't build indexes
+   autoIndex: true, // Don't build indexes
    maxPoolSize: 10, // Maintain up to 10 socket connections
    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
@@ -50,19 +50,19 @@ const takesSchema = new mongoose.Schema({
 let Student = new mongoose.model('Student', studentSchema);
 let Takes = new mongoose.model('Takes', takesSchema);
 
-Object.keys(query.student).forEach(skey => {
+Object.keys(query.students).forEach(skey => {
    console.log(skey);
    let mystudent = new Student({
       _id: new mongoose.Types.ObjectId(),
-      ID: query.student[skey].ID,
-      name: query.student[skey].name,
-      dept_name: query.student[skey].dept_name,
-      credits: query.student[skey].credits
+      ID: query.students[skey].ID,
+      name: query.students[skey].name,
+      dept_name: query.students[skey].dept_name,
+      credits: query.students[skey].credits
    });
 
    mystudent.save().then(() => {
       Object.keys(query.takes).forEach(tkey => {
-         if (query.student[skey].ID == query.takes[tkey].ID) {
+         if (query.students[skey].ID == query.takes[tkey].ID) {
             let take = new Takes({
                ID: query.takes[tkey].ID,
                course_id: query.takes[tkey].course_id,
