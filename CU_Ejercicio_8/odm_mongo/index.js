@@ -120,3 +120,8 @@ async function seedDatabase() {
 }
 
 await seedDatabase();
+
+/*const advisor_p = await Advisor.findOne().populate('s_ID').populate('i_ID');
+console.log(advisor_p.s_ID.name);
+console.log(advisor_p.i_ID.name);
+*/
