@@ -14,6 +14,7 @@ session
   .then(result => {
     result.records.forEach(record => {
       const node = record.get('p').properties;
+      console.log(`Created node: ${node.name}, Age: ${node.age}`);
     });
   })
   .catch(error => {
