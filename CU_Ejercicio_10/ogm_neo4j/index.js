@@ -2,7 +2,7 @@ import neo4j from 'neo4j-driver';
 
 const driver = neo4j.driver(
   'bolt://localhost:7687',
-  neo4j.auth.basic('architect', 'lxoV41Xg')
+  neo4j.auth.basic('architect', 'architect2024')
 );
 
 const session = driver.session({
